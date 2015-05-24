@@ -80,11 +80,11 @@ namespace MuMech
             {
                 if (autopilot.enabled)
                 {
-                    if (GUILayout.Button("Disengage autopilot")) autopilot.users.Remove(this);
+                    if (GUILayout.Button("Desactivar piloto automático")) autopilot.users.Remove(this);
                 }
                 else
                 {
-                    if (GUILayout.Button("Engage autopilot"))
+                    if (GUILayout.Button("Activar piloto automático"))
                     {
                         autopilot.users.Add(this);
                     }
@@ -92,11 +92,11 @@ namespace MuMech
 
                 ascentPath = autopilot.ascentPath;
 
-                GuiUtils.SimpleTextBox("Orbit altitude", autopilot.desiredOrbitAltitude, "km");
+                GuiUtils.SimpleTextBox("Altitud de la órbita", autopilot.desiredOrbitAltitude, "km");
                 autopilot.desiredInclination = desiredInclination;
             }
 
-            GuiUtils.SimpleTextBox("Orbit inclination", desiredInclination, "º");
+            GuiUtils.SimpleTextBox("Inclinación de la órbita", desiredInclination, "º");
 
             core.thrust.LimitToPreventOverheatsInfoItem();
             core.thrust.LimitToTerminalVelocityInfoItem();
@@ -243,7 +243,7 @@ namespace MuMech
 
         public override string GetName()
         {
-            return "Ascent Guidance";
+            return "Ascenso Guiado";
         }
     }
 }

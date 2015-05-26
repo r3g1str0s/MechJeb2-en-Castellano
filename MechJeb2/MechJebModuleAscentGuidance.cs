@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace MuMech
     {
         public MechJebModuleAscentGuidance(MechJebCore core) : base(core) { }
 
-        protected const string TARGET_NAME = "Ascent Path Guidance";
+        protected const string TARGET_NAME = "Ruta de Ascenso Guiado";
 
         public IAscentPath ascentPath = null;
 
@@ -130,12 +130,12 @@ namespace MuMech
 
             autopilot.correctiveSteering = GUILayout.Toggle(autopilot.correctiveSteering, "Corrective steering");
 
-            autopilot.autostage = GUILayout.Toggle(autopilot.autostage, "Autostage");
+            autopilot.autostage = GUILayout.Toggle(autopilot.autostage, "Auto-etapa");
             if (autopilot.autostage) core.staging.AutostageSettingsInfoItem();
 
             core.solarpanel.AutoDeploySolarPanelsInfoItem();
 
-            core.node.autowarp = GUILayout.Toggle(core.node.autowarp, "Auto-warp");
+            core.node.autowarp = GUILayout.Toggle(core.node.autowarp, "Auto-tiempo");
 
             if (autopilot != null && vessel.LandedOrSplashed)
             {
@@ -186,7 +186,7 @@ namespace MuMech
                 else
                 {
                     launchingToInterplanetary = launchingToPlane = launchingToRendezvous = false;
-                    GUILayout.Label("Select a target for a timed launch.");
+                    GUILayout.Label("Seleccione un destino para un lanzamiento programado.");
                 }
 
                 if (launchingToInterplanetary || launchingToPlane || launchingToRendezvous)
@@ -220,16 +220,16 @@ namespace MuMech
 
             if (autopilot != null && autopilot.enabled)
             {
-                GUILayout.Label("Autopilot status: " + autopilot.status);
+                GUILayout.Label("Estado del piloto automático: " + autopilot.status);
             }
 
             if (!vessel.patchedConicsUnlocked())
             {
-                GUILayout.Label("Warning: MechJeb is unable to circularize without an upgraded Tracking Station.");
+                GUILayout.Label("Advertencia: MechJeb no puede circularizar sin estación del seguimiento actualizada.");
             }
 
             MechJebModuleAscentPathEditor editor = core.GetComputerModule<MechJebModuleAscentPathEditor>();
-            if (editor != null) editor.enabled = GUILayout.Toggle(editor.enabled, "Edit ascent path");
+            if (editor != null) editor.enabled = GUILayout.Toggle(editor.enabled, "Editar ruta de ascenso");
 
             GUILayout.EndVertical();
 
